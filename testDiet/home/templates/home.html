@@ -1,5 +1,113 @@
+{% extends "header.html" %}
 {% load static %}
+{% block content %}
+<html>
+<body>
+	<div class="top-nav">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu						
+				</button>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="hvr-bounce-to-bottom active"><a href="index.php">Home</a></li>
+					<li class="hvr-bounce-to-bottom"><a href="diet.php">My Diet</a></li>
+					<li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food Catalog<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="hvr-bounce-to-bottom" href="/home/carb">Carbohydrate</a></li>
+							<li><a class="hvr-bounce-to-bottom" href="/home/fruit">Fruit</a></li>
+							<li><a class="hvr-bounce-to-bottom" href="/home/protein">Protein</a></li> 
+                            <li><a class="hvr-bounce-to-bottom" href="/home/vegetable">Vegatables</a></li>           
+						</ul>
+					</li>	
+					<li class="hvr-bounce-to-bottom"><a href="account.php">My Account</a></li>
+					
+				</ul>	
+				<div class="clearfix"> </div>
+			</div>	
+		</nav>		
+	</div>
+	<!--//navigation-->
+	<!--baner-->
+	<div class="baner">
+		<div class="container">
+			<div class="baner-grids">
+				<div class="col-md-6 baner-top">
+					<figure class="effect-bubba">
+						<img src="{% static 'images/carbohydrate1.jpg' %}" alt=""/>
+						<figcaption>
+					    <h4>Carbohydrate</h4>
+							<p>The term is most common in biochemistry, where it is a synonym of 'saccharide', a group that includes sugars, starch, and cellulose.</p>	
+						</figcaption>			
+					</figure>	
+				</div>
+				<div class="col-md-6 baner-top">
+					<figure class="effect-bubba">
+						<img src="{% static 'images/fruits1.jpg' %}" alt="" />
+						<figcaption>
+					    <h4>Fruits</h4>
+							<p>Fruit normally means the fleshy seed-associated structures of a plant that are sweet or sour, and edible in the raw state.</p>	
+						</figcaption>			
+					</figure>	
+				</div>
+				<div class="clearfix"> </div>
+                <div class="col-md-6 baner-top">
+					<figure class="effect-bubba">
+						<img src="{% static 'images/protein 2.jpg' %}" alt="" />
+						<figcaption>
+					    <h4>Protein</h4>
+							<p>In animals, amino acids are obtained through the consumption of foods containing protein.  </p>	
+					  </figcaption>			
+				  </figure>	
+				</div>
+                <div class="col-md-6 baner-top">
+					<figure class="effect-bubba">
+						<img src="{% static 'images/vegetables1.jpg' %}" alt="" />
+						<figcaption>
+					    <h4>Vegetables</h4>
+							<p>Vegetable is any part of a plant that is consumed by humans as food as part of a meal.</p>	
+					  </figcaption>			
+				  </figure>	
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="footer">	
+		<div class="container">
+			<div class="footer-grids">
+				
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+	
+	<!--//footer-->
+	<!--smooth-scrolling-of-move-up-->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+		});
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+	<!--//smooth-scrolling-of-move-up-->
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+</html>
+{% endblock %}
 
-<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-
-<img src="{% static 'images/carbohydrate.jpg' %}">
