@@ -1,13 +1,47 @@
 {% extends "header.html" %}
 {% load static %}
 {% block content %}
+<<<<<<< Updated upstream
 <html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+<title>Home</title>
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+<!-- Custom Theme files -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Crops Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //Custom Theme files -->
+<!-- js -->
+<script src="js/jquery-1.11.1.min.js"></script> 
+<!-- //js -->	
+<!-- start-smoth-scrolling-->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>	
+<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$(".scroll").click(function(event){		
+				event.preventDefault();
+				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+			});
+		});
+</script>
+<!--//end-smoth-scrolling-->
+</head>
+
+>>>>>>> Stashed changes
 <body>
 	<!--header-->
 	<div class="logo">
 		<div class="container">
 			<div class="logo-info">
 				<a href="index.html">
+<<<<<<< Updated upstream
 					<h1>Diet OPtimization</h1>
 					<span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
 				</a>
@@ -15,11 +49,24 @@
 		</div>
 	</div>
 	<!--//header-->
+=======
+					<h1>Diet OPtimization</h1>	
+					<span class="glyphicon glyphicon-grain" aria-hidden="true"></span>
+				</a>
+			</div>
+		</div>	
+	</div>
+	<!--//header-->		
+>>>>>>> Stashed changes
 	<!--navigation-->
 	<div class="top-nav">
 		<nav class="navbar navbar-default">
 			<div class="container">
+<<<<<<< Updated upstream
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu
+=======
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu						
+>>>>>>> Stashed changes
 				</button>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,6 +78,7 @@
 						<ul class="dropdown-menu">
 							<li><a class="hvr-bounce-to-bottom" href="carbohyrate.php">Carbohydrate</a></li>
 							<li><a class="hvr-bounce-to-bottom" href="fruit.php">Fruit</a></li>
+<<<<<<< Updated upstream
 							<li><a class="hvr-bounce-to-bottom" href="protein.php">Protein</a></li>
                             <li><a class="hvr-bounce-to-bottom" href="vegetable.php">Vegatables</a></li>
 						</ul>
@@ -42,11 +90,25 @@
 			</div>
 		</nav>
 	</div>
+=======
+							<li><a class="hvr-bounce-to-bottom" href="protein.php">Protein</a></li> 
+                            <li><a class="hvr-bounce-to-bottom" href="vegetable.php">Vegatables</a></li>          
+						</ul>
+					</li>	
+					<li class="hvr-bounce-to-bottom"><a href="account.php">My Account</a></li>
+					
+				</ul>	
+				<div class="clearfix"> </div>
+			</div>	
+		</nav>		
+	</div>	
+>>>>>>> Stashed changes
 	<!--//navigation-->
     <div class="baner">
 		<div class="container">
 			<div class="baner-foods">
    <?php
+<<<<<<< Updated upstream
  //get all the information of flowers from table flowers;
 $sql = "SELECT * FROM foods ORDER BY id";
 
@@ -57,6 +119,18 @@ if(!$stmt)  {
     exit;
   }
 oci_execute($stmt);
+=======
+ //get all the information of flowers from table flowers; 
+$sql = "SELECT * FROM foods ORDER BY id";
+
+$stmt = oci_parse($connection, $sql); 
+  
+if(!$stmt)  {
+    echo "An error occurred in parsing the sql string.\n"; 
+    exit; 
+  }
+oci_execute($stmt); 
+>>>>>>> Stashed changes
 
 $count=0;
 
@@ -89,16 +163,26 @@ if($count==1||$count==4||$count==7||$count==10)
 								<p>Satuarted Fat:".$fat."</p>
 								<p>Sugar:".$sugar."</p>
 								<p>Detary Fibre:".$fibre."</p>
+<<<<<<< Updated upstream
 								<p>Price:".$price."</p>
 							</figcaption>
 						</figure>
+=======
+								<p>Price:".$price."</p>	
+							</figcaption>			
+						</figure>	
+>>>>>>> Stashed changes
 					</div>
 	");
 }
 else if($count==3||$count==6||$count==9)
 {
 	print("
+<<<<<<< Updated upstream
 
+=======
+ 
+>>>>>>> Stashed changes
 					<div class='col-md-4 baner-bottom'>
 						<figure class='effect-bubba'>
 							<img src=foodpics/".$photo."  alt='' width='100' height='100'/>
@@ -109,9 +193,15 @@ else if($count==3||$count==6||$count==9)
 								<p>Satuarted Fat:".$fat."</p>
 								<p>Sugar:".$sugar."</p>
 								<p>Detary Fibre:".$fibre."</p>
+<<<<<<< Updated upstream
 								<p>Price:".$price."</p>
 							</figcaption>
 						</figure>
+=======
+								<p>Price:".$price."</p>	
+							</figcaption>			
+						</figure>	
+>>>>>>> Stashed changes
 					</div><div class='clearfix'> </div></div>");
 }
 else
@@ -127,9 +217,15 @@ else
 								<p>Satuarted Fat:".$fat."</p>
 								<p>Sugar:".$sugar."</p>
 								<p>Detary Fibre:".$fibre."</p>
+<<<<<<< Updated upstream
 								<p>Price:".$price."</p>
 							</figcaption>
 						</figure>
+=======
+								<p>Price:".$price."</p>	
+							</figcaption>			
+						</figure>	
+>>>>>>> Stashed changes
 					</div>");
 }
 }
@@ -142,24 +238,37 @@ else
 							<img src="images/img3.jpg" alt=""/>
 							<figcaption>
 						    <h4>Enimet pulvinar posuere</h4>
+<<<<<<< Updated upstream
 								<p>In sit amet sapien eros Integer dolore magna aliqua</p>
 							</figcaption>
 						</figure>
+=======
+								<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+							</figcaption>			
+						</figure>	
+>>>>>>> Stashed changes
 					</div>
 					<div class="col-md-4 baner-bottom">
 						<figure class="effect-bubba">
 							<img src="images/img4.jpg" alt=""/>
 							<figcaption>
 						    <h4>Enimet pulvinar posuere</h4>
+<<<<<<< Updated upstream
 								<p>In sit amet sapien eros Integer dolore magna aliqua</p>
 							</figcaption>
 						</figure>
+=======
+								<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+							</figcaption>			
+						</figure>	
+>>>>>>> Stashed changes
 					</div>
 					<div class="col-md-4 baner-bottom">
 						<figure class="effect-bubba">
 							<img src="images/img5.jpg" alt=""/>
 							<figcaption>
 						    <h4>Enimet pulvinar posuere</h4>
+<<<<<<< Updated upstream
 								<p>In sit amet sapien eros Integer dolore magna aliqua</p>
 							</figcaption>
 						</figure>
@@ -179,6 +288,20 @@ else
 		</div>
 	</div>
 
+=======
+								<p>In sit amet sapien eros Integer dolore magna aliqua</p>	
+							</figcaption>			
+						</figure>	
+					</div>
+					<div class="clearfix"> </div>
+				</div>	
+                -->			
+			</div>
+		</div>
+	</div>
+<?php require_once 'footer.php';?>
+	
+>>>>>>> Stashed changes
 	<!--//footer-->
 	<!--smooth-scrolling-of-move-up-->
 	<script type="text/javascript">
@@ -188,12 +311,21 @@ else
 				containerID: 'toTop', // fading element id
 				containerHoverID: 'toTopHover', // fading element hover id
 				scrollSpeed: 1200,
+<<<<<<< Updated upstream
 				easingType: 'linear'
 			};
 			*/
 
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
+=======
+				easingType: 'linear' 
+			};
+			*/
+			
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+>>>>>>> Stashed changes
 		});
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
@@ -201,9 +333,17 @@ else
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+<<<<<<< Updated upstream
     <script src="{% static 'js/bootstrap.js' %}"></script>
 
 </body>
 </html>
 
 {% endblock %}
+=======
+    <script src="js/bootstrap.js"></script>
+
+</body>
+</html>
+{% endblock %}
+>>>>>>> Stashed changes
