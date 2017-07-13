@@ -1,0 +1,130 @@
+{% extends "header.html" %} {% load static %} {% block content %}
+
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+</head>
+<body>
+
+  <div class="diet-select">
+
+          <form id="form1" action="submission.php">
+
+            <div class="rows">
+                <label class="header"><strong>Fruit:</strong></label> {% for i in fruit %}
+                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <br>
+                <div class="clear"></div>
+            </div>
+
+            <div class="rows">
+                <label class="header"><strong>Protein:</strong></label> {% for i in protein %}
+                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <br>
+                <div class="clear"></div>
+            </div>
+
+            <div class="rows">
+                <label class="header"><strong>Vegetable:</strong></label> {% for i in vegetable %}
+                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <br>
+                <div class="clear"></div>
+            </div>
+
+            <div class="rows">
+                <label class="header"><strong>Carbohydrate:</strong></label> {% for i in carb %}
+                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <br>
+                <div class="clear"></div>
+            </div>
+
+
+            <div class="rows">
+                <label class="header"><strong>Weight:</strong></label>
+                <div class="column2">
+                    <input type="number" min="50" max="100" id="Weight" name="Weight" value="50">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="rows">
+                <label class="header"><strong>Height:</strong></label>
+                <div class="column2">
+                    <input type="number" min="150" max="185" id="Height" name="Height" value="150">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="rows">
+                <label class="header"><strong>Age:</strong></label>
+                <div class="column2">
+                    <input type="number" min="15" max="50" id="Age" name="Age" value="20">
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="rows">
+                <label class="header"><strong>Objectives:</strong></label>
+                <div class="column2">
+                    <select name="Objective">
+
+                        <option value="0">Select objective on your diet</option>
+                        <option value="1">Minimise sodium intake</option>
+                        <option value="2">Minimise sugar intake </option>
+                        <option value="3">Minimise carbohydrates</option>
+                        <option value="4">Minimise fat intaken</option>
+                        <option value="5">Minimise cost</option>
+
+
+                        </select>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-body card-padding" style="text-align:center;">
+                    <!--<button class="btn btn-success btn-lg hec-button waves-effect"  onClick="presubmit(); return false;">Submit</button>-->
+                    <input type="submit">
+                </div>
+            </div>
+
+
+             <div class="clear"></div>
+
+
+          </form>
+        </div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+		});
+
+		/*function presubmit() {
+				$.ajax({
+					  type: "POST",
+					  url: 'submission.php',
+					  data: $("#form1").serialize(),
+					  success: function(data) {
+							window.location = 'submission.php'
+					  }
+					});
+	}*/
+
+		$('input[type=checkbox]').on('change', function (e) {
+		if ($('input[type=checkbox]:checked').length > 9) {
+        $(this).prop('checked', false);
+		}
+		});
+
+	</script>
+	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <script src="js/bootstrap.js"></script>
+
+
+</body>
+</html>
+{% endblock %}

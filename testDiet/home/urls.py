@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'fruit', views.fruit, name = 'fruit'),
     url(r'protein', views.protein, name = 'protein'),
     url(r'veg', views.vegetable, name = 'vegetable'),
+    url(r'diet', views.diet, name = 'diet'),
     # url(r'^store/', 'views.store', name = 'store'),
 
 ]

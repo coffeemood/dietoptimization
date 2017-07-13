@@ -1,0 +1,19 @@
+.food-contain {
+    display: -webkit-flex;
+    display: flex;
+/*
+    width: 900px;
+    height: 40px;
+*/
+    background-color: lightgrey;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+.food-item {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    background-color: aquamarine;
+}
+
