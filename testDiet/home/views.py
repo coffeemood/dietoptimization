@@ -91,7 +91,7 @@ def result(request):
     output = subprocess.check_output("cd /home/ubuntu/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod SAMPLE-DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' ' > oplresult.csv", shell=True)
 
 
-    with open('DATA.csv', 'rb') as f:
+    with open('oplresult.csv', 'rb') as f:
         reader = csv.reader(f)
         your_list = list(reader)
 
