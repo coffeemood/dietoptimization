@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from collections import OrderedDict
 from home.models import Data, Food
-import os
+import os, csv
 
 # Create your views here.
 
@@ -88,7 +88,12 @@ def result(request):
             f.close()
     os.system('cat DATA2.dat >> DATA.dat; rm DATA2.dat')
 
-    # output = subprocess.check_output("cd /home/ubuntu/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod SAMPLE-DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' ' > oplresult.txt", shell=True)
+    output = subprocess.check_output("cd /home/ubuntu/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod SAMPLE-DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' ' > oplresult.csv", shell=True)
+
+
+    with open('DATA.csv', 'rb') as f:
+    reader = csv.reader(f)
+    your_list = list(reader)
 
     return render(request, 'result.html', data)
 
