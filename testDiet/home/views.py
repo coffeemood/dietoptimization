@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from collections import OrderedDict
 from home.models import Data, Food
-import os, csv
+import os, csv, subprocess
 
 # Create your views here.
 
