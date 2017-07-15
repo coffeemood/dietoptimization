@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from collections import OrderedDict
 from home.models import Data, Food
+import os
 
 # Create your views here.
 
@@ -47,6 +48,12 @@ def diet(request):
 
 def result(request):
 
+    # Delete data file if exists
+    try:
+        os.remove('DATA.dat')
+    except OSError:
+        pass
+
     # Collect all choices
     context = {k: v[0] if len(v) == 1 else v for k, v in request.POST.lists()}
     def removekey(d, key):
@@ -63,18 +70,25 @@ def result(request):
         for key in data:
             data[key].append(current[0][key])
 
+    # Pasting content of dictionary to data file in OPL format
     for i in data:
         s1,s2 = '',''
         if i == 'foodname':
             s1 = ','.join(data[i])
             s2 = 'Food = {%s};\n' % s1
+            f = open('DATA.dat', 'a')
+            f.write(s2)
+            f.close()
         else:
             l1 = ['{:.2f}'.format(x) for x in data[i]]
             s1 = ','.join(l1)
             s2 = '%s = [%s];\n' % (i,s1)
-        f = open('DATA.dat', 'a')
-        f.write(s2)
-        f.close()
+            f = open('DATA2.dat', 'a')
+            f.write(s2)
+            f.close()
+    os.system('cat DATA2.dat >> DATA.dat; rm DATA2.dat')
+
+    # output = subprocess.check_output("cd /home/ubuntu/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod SAMPLE-DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' ' > oplresult.txt", shell=True)
 
     return render(request, 'result.html', data)
 
