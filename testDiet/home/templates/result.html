@@ -1,0 +1,86 @@
+{% extends "header.html" %} {% load static %}
+
+{% block content %}
+<html>
+<body>
+    <!--navigation-->
+    <div class="top-nav">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu
+				</button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="hvr-bounce-to-bottom"><a href="index.php">Home</a></li>
+                    <li class="hvr-bounce-to-bottom"><a href="diet.php">My Diet</a></li>
+                    <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food Catalog<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="hvr-bounce-to-bottom" href="carbohyrate.php">Carbohydrate</a></li>
+                            <li><a class="hvr-bounce-to-bottom" href="fruit.php">Fruit</a></li>
+                            <li><a class="hvr-bounce-to-bottom" href="protein.php">Protein</a></li>
+                            <li><a class="hvr-bounce-to-bottom" href="vegetable.php">Vegatables</a></li>
+                        </ul>
+                    </li>
+                    <li class="hvr-bounce-to-bottom"><a href="account.php">My Account</a></li>
+
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+        </nav>
+    </div>
+    <!--//navigation-->
+                <div class="baner">
+                    <div class="container">
+<!--
+                        <p>Your choices are: </p>
+                        <p> Weight: {{Weight}} </p>
+                        <p> Height: {{Height}} </p>
+                        <p> Objective: {{Objective}}</p>
+                        <p> Age: {{Age}} </p>
+                        <p>
+                            <ol> Choices: {% for i in choice %}
+                                <li>{{ i }} </li>
+                                {% endfor %}
+                            </ol>
+-->
+                        <ol> Choices: {% for i in foodname %}
+                                <li>{{ i }} </li>
+                                {% endfor %}
+                            </ol>
+
+
+                    </div>
+                </div>
+
+
+    <!--smooth-scrolling-of-move-up-->
+    <script type="text/javascript">
+        $(document).ready(function() {
+            /*
+            var defaults = {
+            	containerID: 'toTop', // fading element id
+            	containerHoverID: 'toTopHover', // fading element hover id
+            	scrollSpeed: 1200,
+            	easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!--//smooth-scrolling-of-move-up-->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

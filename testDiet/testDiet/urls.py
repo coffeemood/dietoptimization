@@ -18,6 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     #url(r'^showResult$', include('showResult.urls'), name = 'index'),
+    url(r'^$', include('home.urls'), name = 'home'),
     url(r'^home/', include('home.urls'), name = 'home'),
     url(r'^admin/', admin.site.urls),
 ]

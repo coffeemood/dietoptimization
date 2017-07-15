@@ -6,35 +6,61 @@
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 </head>
 <body>
+    <div class="top-nav">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">Menu
+                    </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="hvr-bounce-to-bottom"><a href="index.php">Home</a></li>
+                    <li class="hvr-bounce-to-bottom"><a href="diet.php">My Diet</a></li>
+                    <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food Catalog<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="hvr-bounce-to-bottom" href="carbohyrate.php">Carbohydrate</a></li>
+                            <li><a class="hvr-bounce-to-bottom" href="fruit.php">Fruit</a></li>
+                            <li><a class="hvr-bounce-to-bottom" href="protein.php">Protein</a></li>
+                            <li><a class="hvr-bounce-to-bottom" href="vegetable.php">Vegatables</a></li>
+                        </ul>
+                    </li>
+                    <li class="hvr-bounce-to-bottom"><a href="account.php">My Account</a></li>
+
+                </ul>
+                <div class="clearfix"> </div>
+            </div>
+        </nav>
+    </div>
 
   <div class="diet-select">
 
-          <form id="form1" action="submission.php">
+          <form method="post" id="form1" action="{% url 'result' %}"> {% csrf_token %}
 
             <div class="rows">
                 <label class="header"><strong>Fruit:</strong></label> {% for i in fruit %}
-                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
                 <br>
                 <div class="clear"></div>
             </div>
 
             <div class="rows">
                 <label class="header"><strong>Protein:</strong></label> {% for i in protein %}
-                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
                 <br>
                 <div class="clear"></div>
             </div>
 
             <div class="rows">
                 <label class="header"><strong>Vegetable:</strong></label> {% for i in vegetable %}
-                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
                 <br>
                 <div class="clear"></div>
             </div>
 
             <div class="rows">
                 <label class="header"><strong>Carbohydrate:</strong></label> {% for i in carb %}
-                <input type="checkbox" value="{{i.foodname}}" id=""> {{i.foodname}} {% endfor %}
+                <input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
                 <br>
                 <div class="clear"></div>
             </div>
