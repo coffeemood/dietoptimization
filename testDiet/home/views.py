@@ -92,8 +92,8 @@ def result(request):
 
 
     with open('DATA.csv', 'rb') as f:
-    reader = csv.reader(f)
-    your_list = list(reader)
+        reader = csv.reader(f)
+        your_list = list(reader)
 
     return render(request, 'result.html', data)
 
