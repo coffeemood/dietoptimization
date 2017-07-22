@@ -274,12 +274,10 @@
             }
         });
         
-        
-        
-        if($('.Objective').val()){
-            alert("ERROR: Please choose a valid objective for optimization");
+        if(document.getElementById('Objective').value == "0") {
+                alert("ERROR: Please choose a valid objective");
                 return false;
-        }
+            }
 
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
