@@ -210,9 +210,9 @@
                     <select name="Objective">
                         <option value="0">Select objective on your diet</option>
                         <option value="1">Minimise sodium intake</option>
-                        <option value="2">Minimise sugar intake </option>
+                        <option value="2">Minimise sugar intake</option>
                         <option value="3">Minimise carbohydrates</option>
-                        <option value="4">Minimise fat intaken</option>
+                        <option value="4">Minimise fat intake</option>
                         <option value="5">Minimise cost</option>
                     </select>
                 </td>
@@ -269,7 +269,7 @@
                 alert("ERROR: Please enter a valid age between 15 and 50");
                 return false;
             }
-            if (inputObj.val != 1 || inputObj.val != 2 || inputObj.val != 3 || inputObj.val != 4 || inputObj.val != 5) {
+            if (inputObj != 'Minimise sodium intake' || inputObj != 'Minimise sugar intake' || inputObj != 'Minimise carbohydrates' || inputObj != 'Minimise fat intaken' || inputObj != 'Minimise cost') {
                 alert("ERROR: Please choose a valid objective");
                 return false;
             }
