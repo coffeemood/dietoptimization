@@ -186,12 +186,12 @@
                 </td>
                 <td id="obj">
                     <select id="Objective">
-                        <option value="0">Select objective on your diet</option>
-                        <option value="1">Minimise sodium intake</option>
-                        <option value="2">Minimise sugar intake </option>
-                        <option value="3">Minimise carbohydrates</option>
-                        <option value="4">Minimise fat intaken</option>
-                        <option value="5">Minimise cost</option>
+                        <option id="obk" value="0">Select objective on your diet</option>
+                        <option id="obk1" value="1">Minimise sodium intake</option>
+                        <option id="obk2" value="2">Minimise sugar intake </option>
+                        <option id="obk3" value="3">Minimise carbohydrates</option>
+                        <option id="obk4" value="4">Minimise fat intaken</option>
+                        <option id="obk5" value="5">Minimise cost</option>
                     </select>
                 </td>
             </tr>
@@ -256,7 +256,6 @@
             var inputWeight= $('#Weight').val();
             var inputHeight = $('#Height').val();
             var inputAge = $('#Age').val();
-            var inputObj = $('#Objective').val();
             if (inputWeight > 100 || inputWeight < 50) {
                 alert("ERROR: Please enter a valid weight between 50 and 100");
                 return false;
@@ -269,11 +268,18 @@
                 alert("ERROR: Please enter a valid age between 15 and 50");
                 return false;
             }
-            if (inputObj != 'Minimise sodium intake' || inputObj != 'Minimise sugar intake' || inputObj != 'Minimise carbohydrates' || inputObj != 'Minimise fat intaken' || inputObj != 'Minimise cost') {
+            if(document.getElementById('Objective').value == "0") {
                 alert("ERROR: Please choose a valid objective");
                 return false;
             }
         });
+        
+        
+        
+        if($('.Objective').val()){
+            alert("ERROR: Please choose a valid objective for optimization");
+                return false;
+        }
 
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
