@@ -222,7 +222,7 @@
         <div class="card">                    
             <div class="card-body card-padding" style="text-align:center;">
                 <!--<button class="btn btn-success btn-lg hec-button waves-effect"  onClick="presubmit(); return false;">Submit</button>-->
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" id="submit">
             </div>
         </div>
     </form>
@@ -251,6 +251,14 @@
         $(this).prop('checked', false);
 		}
 		});
+        
+        $('#submit').click(function() {
+            var inputlength = $('#Height').val();
+            if (inputlength > 185 || inputlength < 150) {
+                alert("ERROR", "Please enter a valid height", "warning");
+                return false;
+            }
+        });
 
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
