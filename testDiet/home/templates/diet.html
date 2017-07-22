@@ -155,7 +155,7 @@
             </tr>
             <tr>
                 <td style="width: 360px;">
-                    <b>Weight:</b>
+                    <b>Weight (in kg):</b>
                 </td>
                 <td>
                     <input type="number" min="50" max="100" id="Weight" name="Weight" value="50">
@@ -164,7 +164,7 @@
 
             <tr>
                 <td>
-                    <b>Height:</b>
+                    <b>Height (in inches):</b>
                 </td>
                 <td>
                     <input type="number" min="150" max="185" id="Height" name="Height" value="150">
@@ -253,9 +253,19 @@
 		});
         
         $('#submit').click(function() {
-            var inputlength = $('#Height').val();
-            if (inputlength > 185 || inputlength < 150) {
-                alert("ERROR", "Please enter a valid height", "warning");
+            var inputHeight= $('#Height').val();
+            var inputWeight = $('#Height').val();
+            var inputAge = $('#Height').val();
+            if (inputHeight > 185 || inputHeight < 150) {
+                alert("ERROR: Please enter a valid height between 150 and 185");
+                return false;
+            }
+            if (inputWeight > 100 || inputWeight < 50) {
+                alert("ERROR: Please enter a valid weight between 50 and 100");
+                return false;
+            }
+            if (inputAge > 50 || inputAge < 15) {
+                alert("ERROR: Please enter a valid age between 15 and 50");
                 return false;
             }
         });
