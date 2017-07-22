@@ -132,16 +132,16 @@
             <td>Carbohydrates</td>
         </tr>
         <tr style="background-color: #cccccc">
-            <td>{% for i in fruit %}
+            <td valign="top">{% for i in fruit %}
                 <br><input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
             </td>
             <td>{% for i in protein %}
                 <br><input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
             </td>
-            <td>{% for i in vegetable %}
+            <td valign="top">{% for i in vegetable %}
                 <br><input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
             </td>
-            <td>{% for i in carb %}
+            <td valign="top">{% for i in carb %}
                 <br><input type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> {{i.foodname}} {% endfor %}
             </td>
         </tr>
