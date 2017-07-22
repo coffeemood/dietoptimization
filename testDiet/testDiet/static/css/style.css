@@ -298,9 +298,15 @@ input
 {
 	border: solid 1px #000;
 	 font-family              : SimHei;
-               
-               color                    : RGBA(102,102,102,0.7);
 	}
+
+input[type=submit] {padding:5px 15px; background:#ccc; border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #5cc5f2
+}
+
 input.submit	
 {
 border:none;
