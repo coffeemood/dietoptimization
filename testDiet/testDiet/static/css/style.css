@@ -263,7 +263,7 @@ select
     cursor:pointer;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+/*@media screen and (-webkit-min-device-pixel-ratio:0) {
     select {padding-right:18px}
 }
 
@@ -290,7 +290,7 @@ select
     position:absolute;
     pointer-events:none;
     display:block;
-}
+}*/
 
 
 
