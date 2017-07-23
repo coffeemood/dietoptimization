@@ -41,9 +41,10 @@ def vegetable(request):
 def diet(request):
     fruit = list(Food.objects.filter(type='fruit').values())
     protein = list(Food.objects.filter(type='protein').values())
-    carbohydrate = list(Food.objects.filter(type='fruit').values())
+    carbohydrate = list(Food.objects.filter(type='carb').values())
     vegetable = list(Food.objects.filter(type='vegetable').values())
     context = {"fruit":fruit,"protein":protein,"vegetable":vegetable,"carb":carbohydrate}
+
     return render(request, 'diet.html', context)
 
 def result(request):
@@ -88,7 +89,7 @@ def result(request):
             f.close()
     os.system('cat DATA2.dat >> DATA.dat; rm DATA2.dat')
 
-    output = subprocess.check_output("cd /home/ubuntu/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' ' > oplresult.csv", shell=True)
+    os.system("cd /home/ubuntu/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' ' > oplresult.csv")
 
 
     with open('oplresult.csv', 'rb') as f:
