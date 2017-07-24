@@ -16,7 +16,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="hvr-bounce-to-bottom"><a href="index.php">Home</a></li>
+                    <li class="hvr-bounce-to-bottom"><a href="{% url 'home' %}">Home</a></li>
                     <li class="hvr-bounce-to-bottom"><a href="diet.php">My Diet</a></li>
                     <li><a href="#" class="dropdown-toggle hvr-bounce-to-bottom active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Food Catalog<span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
     <form method="post" id="form1" action="{% url 'result' %}"> {% csrf_token %}
        <br>
         <div class="page-header">
-          <h1 align="center"> Food Selection</h1>
+          <h1 align="center"><u>Food Selection</u></h1>
         </div>
         <table style="margin-left: 50px;" border="1" cellpadding="20px" width="90%">
             <tr style="background-color:#e6e6e6; color:#404040;">
@@ -77,7 +77,7 @@
         <br>
 
         <div class="page-header">
-          <h1 align="center"> User Details</h1>
+          <h1 align="center"><u>User Details</u></h1>
         </div>
         <table style="margin-left: 50px; border-collapse: separate; border-spacing: 10px;" cellpadding="20px" width="90%">
             <tr>
@@ -114,7 +114,7 @@
 
                 <td id="obj">
                     <select style="text-align-last:center; font-size: 16" class="form-control" id="Objective">
-<!--                        <option id="obk" value="0">Select objective for optimization</option>-->
+                        <option id="obk" value="0">Select objective for optimization</option>
                         <option id="obk1" value="1">Minimise sodium intake</option>
                         <option id="obk2" value="2">Minimise sugar intake </option>
                         <option id="obk3" value="3">Minimise carbohydrates</option>
@@ -130,7 +130,7 @@
         <div class="card">
             <br>
             <div class="card-body card-padding" style="text-align:center;">
-                <button type="submit" id="submit" class="btn btn-primary btn-lg btn-block" > Optimize </button>
+                <button type="submit" id="submit" name='submit' class="btn btn-primary btn-lg btn-block" > Optimize </button>
             </div>
         </div>
     </form>
@@ -148,9 +148,9 @@
             var inputWeight= $('#Weight').val();
             var inputHeight = $('#Height').val();
             var inputAge = $('#Age').val();
-            var checkBox = document.getElementsByName("choice");
+            var checkBox = ($('input[name="choice"]:checked').length)
             var x = document.getElementById("Objective").selectedIndex;
-            if(checkBox.length<=5){alert("Please select at least 6 food types to optimize your diet"); return false;}
+            if(checkBox<=5){alert("Please select at least 6 food types to optimize your diet"); return false;}
             if (inputWeight > 100 || inputWeight < 50) {
                 alert("ERROR: Please enter a valid weight between 50 and 100");
                 return false;
