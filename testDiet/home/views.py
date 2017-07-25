@@ -4,13 +4,17 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from collections import OrderedDict
 from home.models import Data, Food
+from django.http import HttpResponse
 import os, csv, subprocess
 
 # Create your views here.
 
 def index(request):
-
+#	batcmd = "/opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod /var/www/DATA.dat"
+ #       output = subprocess.check_output(batcmd, shell=True)
+#	context = {'output':output,}
 	return render(request, 'home.html')
+
 
 def carb(request):
     carb = Data.objects.filter(type='carbohydrate')
@@ -44,6 +48,7 @@ def diet(request):
     carbohydrate = list(Food.objects.filter(type='carb').values())
     vegetable = list(Food.objects.filter(type='vegetable').values())
     context = {"fruit":fruit,"protein":protein,"vegetable":vegetable,"carb":carbohydrate}
+    os.system("echo 'helloooo' > hello.txt")
 
     return render(request, 'diet.html', context)
 
@@ -89,12 +94,14 @@ def result(request):
             f.close()
     os.system('cat DATA2.dat >> DATA.dat; rm DATA2.dat')
 
-    os.system("cd /home/ubuntu/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' ' > oplresult.csv")
-
-
-    with open('oplresult.csv', 'rb') as f:
-        reader = csv.reader(f)
-        your_list = list(reader)
+    cmdd = "cd /var/www/html/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod /var/www/DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' '"
+    output = subprocess.check_output(cmdd, shell=True)
+    f = open('oplresult.csv', 'a')
+    f.write(output)
+    f.close()
+    #with open('oplresult.csv', 'rb') as f:
+     #   reader = csv.reader(f, delimiter=' ')
+      #  your_list = list(reader)
 
     return render(request, 'result.html', data)
 
