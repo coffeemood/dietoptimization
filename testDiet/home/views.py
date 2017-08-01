@@ -60,6 +60,11 @@ def result(request):
     except OSError:
         pass
 
+    try:
+        os.remove('/var/www/oplresult.csv')
+    except OSError:
+        pass
+
     # Collect all choices
     context = {k: v[0] if len(v) == 1 else v for k, v in request.POST.lists()}
     def removekey(d, key):
@@ -94,15 +99,17 @@ def result(request):
             f.close()
     os.system('cat DATA2.dat >> DATA.dat; rm DATA2.dat')
 
-    cmdd = "cd /var/www/html/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod /var/www/DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ' '"
+    cmdd = "cd /var/www/html/dietoptimization/testDiet; /opt/ibm/ILOG/CPLEX_Studio_Community127/opl/bin/x86-64_linux/oplrun -v MODEL.mod /var/www/DATA.dat | grep -A 2 yAmount | cut -d '[' -f2 | cut -d ']' -f1 | tr -d '\n' | tr -s '[[:space:]]' ','"
     output = subprocess.check_output(cmdd, shell=True)
     f = open('oplresult.csv', 'a')
     f.write(output)
     f.close()
-    #with open('oplresult.csv', 'rb') as f:
-     #   reader = csv.reader(f, delimiter=' ')
-      #  your_list = list(reader)
+    with open('oplresult.csv', 'rb') as f:
+       reader = csv.reader(f, delimiter=str(u','))
+       mylist = list(reader)
+    data['opti'] = mylist[0]
+    final = zip(data['foodname'],data['opti'])
 
-    return render(request, 'result.html', data)
+    return render(request, 'result.html', {'final':final,})
 
 
