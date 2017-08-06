@@ -45,7 +45,12 @@
                                 {% endfor %}
                             </ol>
 -->
-                        <ol> Choices: {% for x,y in final %}
+                       <h1>Thank you for using Diet Optimization</h1>
+                       <hr>
+                       <h4>Your Optimized Diet: </h4>
+                       <p>According to your choices, here is your recommended grocery for this week</p>
+                       <p><sub>Reminder: The units displayed are per 100g / food</sub></p>
+                        <ol> My Diet: {% for x,y in final %}
                                 <li>{{ x }} : {{ y }} </li>
                                 {% endfor %}
                             </ol>

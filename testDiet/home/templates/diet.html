@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
 </head>
 <body>
     <div class="top-nav">
@@ -40,35 +41,39 @@
         <div class="page-header">
           <h1 align="center"><u>Food Selection</u></h1>
         </div>
-        <table style="margin-left: 50px;" border="1" cellpadding="20px" width="90%">
+        <table name='fooddb' id='food' style="margin-left: 50px;" border="1" cellpadding="20px" width="90%">
             <tr style="background-color:#e6e6e6; color:#404040;">
-                <td class="foodtype"><b>Fruit</b></td>
-                <td class="foodtype"><b>Protein</b></td>
-                <td class="foodtype"><b>Vegetable</b></td>
-                <td class="foodtype"><b>Carbohydrates</b></td>
+                <td class="foodtype"><b>Fruit</b>
+                <input style="margin-bottom: 5px;" type="checkbox" id="allFruit"></td>
+                <td class="foodtype"><b>Protein</b>
+                <input style="margin-bottom: 5px;" type="checkbox" id="allPro"></td>
+                <td class="foodtype"><b>Vegetable</b>
+                <input style="margin-bottom: 5px;" type="checkbox" id="allVeg"></td>
+                <td class="foodtype"><b>Carbohydrates</b>
+                <input style="margin-bottom: 5px;" type="checkbox" id="allCarb"></td>
             </tr>
             <tr style="background-color: #f2f2f2">
                 <td valign="top">{% for i in fruit %}
                     <div style="margin-left: 10px" class="checkbox checkbox-success checkbox-circle">
-                        <input style="margin-bottom: 5px;" type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
+                        <input style="margin-bottom: 5px;" type="checkbox" name="choice1" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
                     </div>
                     {% endfor %}
                 </td>
                 <td valign="top">{% for i in protein %}
                     <div style="margin-left: 10px" class="checkbox checkbox-danger checkbox-circle">
-                        <input style="margin-bottom: 5px;" type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
+                        <input style="margin-bottom: 5px;" type="checkbox" name="choice2" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
                     </div>
                     {% endfor %}
                 </td>
                 <td valign="top">{% for i in vegetable %}
                     <div style="margin-left: 10px" class="checkbox checkbox-primary checkbox-circle">
-                        <input style="margin-bottom: 5px;" type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
+                        <input style="margin-bottom: 5px;" type="checkbox" name="choice3" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
                     </div>
                     {% endfor %}
                 </td>
                 <td valign="top">{% for i in carb %}
                     <div style="margin-left: 10px" class="checkbox checkbox-warning checkbox-circle">
-                        <input style="margin-bottom: 5px;" type="checkbox" name="choice" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
+                        <input style="margin-bottom: 5px;" type="checkbox" name="choice4" value="{{i.foodname}}" id="{{i.foodname}}"> <label for="{{i.foodname}}"> {{i.foodname}} </label>
                     </div>
                     {% endfor %}
                 </td>
@@ -142,13 +147,61 @@
 			$().UItoTop({ easingType: 'easeOutQuart' });
 
 		});
+        
+        $('#allFruit').click(function() {
+           if (this.checked) {
+               $('input[name=choice1]').each(function() {
+                   this.checked = true;                        
+               });
+           } else {
+              $('input[name=choice1]').each(function() {
+                   this.checked = false;                        
+               });
+           } 
+        });
+        
+        $('#allVeg').click(function() {
+           if (this.checked) {
+               $('input[name=choice3]').each(function() {
+                   this.checked = true;                        
+               });
+           } else {
+              $('input[name=choice3]').each(function() {
+                   this.checked = false;                        
+               });
+           } 
+        });
+        
+        $('#allCarb').click(function() {
+           if (this.checked) {
+               $('input[name=choice4]').each(function() {
+                   this.checked = true;                        
+               });
+           } else {
+              $('input[name=choice4]').each(function() {
+                   this.checked = false;                        
+               });
+           } 
+        });
+        
+        $('#allPro').click(function() {
+           if (this.checked) {
+               $('input[name=choice2]').each(function() {
+                   this.checked = true;                        
+               });
+           } else {
+              $('input[name=choice2]').each(function() {
+                   this.checked = false;                        
+               });
+           } 
+        });
 
         
         $('#submit').click(function() {
             var inputWeight= $('#Weight').val();
             var inputHeight = $('#Height').val();
             var inputAge = $('#Age').val();
-            var checkBox = ($('input[name="choice"]:checked').length)
+            var checkBox = ($('input[type="checkbox"]:checked').length)
             var x = document.getElementById("Objective").selectedIndex;
             if(checkBox<=5){alert("Please select at least 6 food types to optimize your diet"); return false;}
             if (inputWeight > 100 || inputWeight < 50) {

@@ -75,11 +75,16 @@ def result(request):
         context = removekey(context, "csrfmiddlewaretoken")
 
     data = {'foodname':[],'cost':[],'protein':[],'fibre':[],'sugar':[],'satfat':[]}
-
-    for i in context['choice']:
-        current = list(Food.objects.filter(foodname=i).values())
-        for key in data:
-            data[key].append(current[0][key])
+    
+    foodlist = ['choice1','choice2','choice3','choice4']
+    for x in foodlist:
+        if x in context:
+            for i in context[x]:
+                current = list(Food.objects.filter(foodname=i).values())
+                for key in data:
+                    data[key].append(current[0][key])
+        else:
+            continue
 
     # Pasting content of dictionary to data file in OPL format
     for i in data:
